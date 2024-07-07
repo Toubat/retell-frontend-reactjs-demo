@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { RetellWebClient } from "retell-client-js-sdk";
 
-const agentId = "YOUR_AGENT_ID";
+const agentId = "bb9dfb0784536ea6aa038a51fa868b1c";
 
 interface RegisterCallResponse {
   callId?: string;
@@ -62,18 +62,15 @@ const App = () => {
   async function registerCall(agentId: string): Promise<RegisterCallResponse> {
     try {
       // Replace with your server url
-      const response = await fetch(
-        "http://localhost:8080/register-call-on-your-server",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            agentId: agentId,
-          }),
+      const response = await fetch("http://localhost:8080/register-call-on-your-server", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          agentId: agentId,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
@@ -90,9 +87,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={toggleConversation}>
-          {isCalling ? "Stop" : "Start"}
-        </button>
+        <button onClick={toggleConversation}>{isCalling ? "Stop" : "Start"}</button>
       </header>
     </div>
   );
